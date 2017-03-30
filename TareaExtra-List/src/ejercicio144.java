@@ -33,7 +33,6 @@ public class ejercicio144 {
 				} catch (Exception e) {
 
 				}
-
 			} else if (letterArr[i] == '3') {
 				try {
 					letterList.remove(count);
