@@ -1,59 +1,63 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ejercicio144 {
 
-	static java.util.Scanner in;
+	static Scanner in;
 	static BufferedReader br;
 
 	public static boolean casoDePrueba() {
 		if (!in.hasNext())
 			return false;
 
-		char[] asdf = null;
-		asdf = in.nextLine().toCharArray();
+		char[] letterArr = null;
+		letterArr = in.nextLine().toCharArray();
 
 		int count = 0;
-		ArrayList<Character> qwer = new ArrayList<Character>();
+		ArrayList<Character> letterList = new ArrayList<Character>();
 
-		for (int i = 0; i < asdf.length; i++) {
+		for (int i = 0; i < letterArr.length; i++) {
 
-			if (asdf[i] == '-') {
+			if (letterArr[i] == '-') {
 				count = 0;
-			} else if (asdf[i] == '+') {
-				count = qwer.size();
-			} else if (asdf[i] == '*') {
+			} else if (letterArr[i] == '+') {
+				count = letterList.size();
+			} else if (letterArr[i] == '*') {
 				try {
-					if ((qwer.get(count) >= 32 && qwer.get(count) <= 255)
-							|| (qwer.get(count) >= 97 && qwer.get(count) <= 122)) {
+					if ((letterList.get(count) >= 32 && letterList.get(count) <= 255)
+							|| (letterList.get(count) >= 97 && letterList.get(count) <= 122)) {
 						count++;
 					}
 				} catch (Exception e) {
 
 				}
-			} else if (asdf[i] == '3') {
+
+			} else if (letterArr[i] == '3') {
 				try {
-					qwer.remove(count);
+					letterList.remove(count);
 				} catch (Exception e) {
 
 				}
 
 			} else {
-				qwer.add(count, asdf[i]);
+				letterList.add(count, letterArr[i]);
 				count++;
 			}
 
 		}
-		for (int i = 0; i < qwer.size(); i++) {
-			System.out.print(qwer.get(i));
+
+		for (int i = 0; i < letterList.size(); i++) {
+			System.out.print(letterList.get(i));
 		}
+
 		System.out.println();
 		return true;
 	}
 
 	public static void main(String args[]) {
-		in = new java.util.Scanner(System.in);
+		in = new Scanner(System.in);
 		br = new BufferedReader(new InputStreamReader(System.in));
 
 		while (casoDePrueba())
